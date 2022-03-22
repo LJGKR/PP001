@@ -1,6 +1,5 @@
 #pragma once
-#include "MCommand.hpp"
-using namespace std;
+
 
 namespace Museun
 {
@@ -19,7 +18,7 @@ namespace Museun
 	{
 		
 		int input;
-		cin >> input;
+		std::cin >> input;
 
 		key[input]->Execute();
 

@@ -142,6 +142,7 @@
     <ClCompile Include="Lceture03.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="KeyCommand.hpp" />
     <ClInclude Include="MCommand.hpp" />
     <ClInclude Include="MGameLoop.hpp" />
   </ItemGroup>

@@ -1,7 +1,6 @@
 #include <iostream>
-#include "MCommand.hpp"
+#include "KeyCommand.hpp"
 #include "MGameLoop.hpp"
-using namespace std;
 
 
 void main()
