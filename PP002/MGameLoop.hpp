@@ -1,10 +1,10 @@
 #pragma once
-
+#include "KeyCommand.hpp"
 
 namespace Museun
 {
 	MCommand *key[5];
-	void Start()
+	void Initialize()
 	{
 		key[0] = new LeftCommand();
 		key[1] = new RightCommand();
@@ -56,7 +56,7 @@ namespace Museun
 		{
 			isGameRunning = true;
 
-			Start();
+			Initialize();
 
 			while (isGameRunning)
 			{

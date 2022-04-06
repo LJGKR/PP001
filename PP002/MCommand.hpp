@@ -9,6 +9,6 @@ namespace Museun
 		MCommand() {}
 		virtual ~MCommand() {}
 
-		virtual void Execute() {}
+		virtual void Execute() {    }
 	};
 }
