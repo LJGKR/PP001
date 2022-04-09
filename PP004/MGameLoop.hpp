@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <chrono>
 #include <thread>
+#include "MConsolUtil.hpp"
 
 using namespace std;
 
@@ -11,8 +12,10 @@ namespace MuSeoun_Engine
 {
 	class MGameLoop
 	{
+		int frameNum = 0;
 	private :
 		bool _isGameRunning;
+		MConsoleRenderer cRenderer;
 	public :
 
 		MGameLoop() 
@@ -47,19 +50,19 @@ namespace MuSeoun_Engine
 		
 		void Initialize ()
 		{
-			SetCursorState(false);
+			
 		}
 
 		void Input()
 		{
-			if (GetAsyncKeyState(VK_SPACE) == -0x8000 || GetAsyncKeyState(VK_SPACE) == -0x8001)
+			/*if (GetAsyncKeyState(VK_SPACE) == -0x8000 || GetAsyncKeyState(VK_SPACE) == -0x8001)
 			{
 				
 			}
 			else
 			{
 				
-			}
+			}*/
 		}
 		void Update()
 		{
@@ -67,23 +70,32 @@ namespace MuSeoun_Engine
 		}
 		void Render()
 		{
-			chrono::system_clock::time_point startRenderTimePoint = chrono::system_clock::now();
-			//system("cls");
-			cout << "Rendering...";
+			
+				
+				chrono::system_clock::time_point startRenderTimePoint = chrono::system_clock::now();
+				//system("cls");
+				cRenderer.Clear();
+				cRenderer.MoveCursor(10, 10);
+				
 
+				chrono::duration<double> renderDuration = chrono::system_clock::now() - startRenderTimePoint;
+				
+				double frame = 1.0f / renderDuration.count();
+				int Frame = frame + 0;
+				string fps = "FPS(seconds):" + to_string(Frame);
+				cRenderer.DrawString(fps);
+				//fps 출력하는 코드 ....
+			
 
+			//cout << "Rendering speed : " << renderDuration.count() << "sec" << endl;
+			//cout << "프로그래밍 패턴 스크린샷..";
 
+			//int remainingFrameTime = 100 - (int)(renderDuration.count() * 1000 / 0);
 
-			chrono::duration<double> renderDuration = chrono::system_clock::now() - startRenderTimePoint;
-			cout << "Rendering speed : " << renderDuration.count() << "sec" << endl;
-			cout << "프로그래밍 패턴 스크린샷..";
-
-			int remainingFrameTime = 100 - (int)(renderDuration.count() * 1000 / 0);
-
-			if (remainingFrameTime > 0)
-			{
-				this_thread::sleep_for(chrono::milliseconds(remainingFrameTime));
-			}
+			//if (remainingFrameTime > 0)
+			//{
+				//this_thread::sleep_for(chrono::milliseconds(remainingFrameTime));
+			//}
 				
 		}
 
