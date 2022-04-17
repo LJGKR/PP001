@@ -4,6 +4,7 @@
 #include <chrono>
 #include <thread>
 #include "MConsolUtil.hpp"
+#include "Player.hpp"
 
 using namespace std;
 
@@ -16,6 +17,11 @@ namespace MuSeoun_Engine
 	private :
 		bool _isGameRunning;
 		MConsoleRenderer cRenderer;
+
+		chrono::system_clock::time_point startRenderTimePoint;
+		chrono::duration<double> renderDuration;
+		Player p;
+
 	public :
 
 		MGameLoop() 
@@ -29,6 +35,7 @@ namespace MuSeoun_Engine
 			_isGameRunning = true;
 
 			Initialize();
+			startRenderTimePoint = chrono::system_clock::now();
 
 			while (_isGameRunning)
 			{
@@ -55,14 +62,14 @@ namespace MuSeoun_Engine
 
 		void Input()
 		{
-			/*if (GetAsyncKeyState(VK_SPACE) == -0x8000 || GetAsyncKeyState(VK_SPACE) == -0x8001)
+			if (GetAsyncKeyState(VK_SPACE) == -0x8000 || GetAsyncKeyState(VK_SPACE) == -0x8001)
 			{
-				
+				p.isKeyPressed();
 			}
 			else
 			{
-				
-			}*/
+				p.isKeyUnpressed();
+			}
 		}
 		void Update()
 		{
@@ -72,17 +79,22 @@ namespace MuSeoun_Engine
 		{
 			
 				
-				chrono::system_clock::time_point startRenderTimePoint = chrono::system_clock::now();
-				//system("cls");
 				cRenderer.Clear();
+
+				cRenderer.MoveCursor(p.x, p.y);
+				cRenderer.DrawString("P");
+
 				cRenderer.MoveCursor(10, 10);
 				
 
-				chrono::duration<double> renderDuration = chrono::system_clock::now() - startRenderTimePoint;
+				renderDuration = chrono::system_clock::now() - startRenderTimePoint;
+
+				startRenderTimePoint = chrono::system_clock::now();
 				
-				double frame = 1.0f / renderDuration.count();
-				int Frame = frame + 0;
-				string fps = "FPS(seconds):" + to_string(Frame);
+				//double frame = 1.0f / renderDuration.count();
+				//int Frame = frame + 0;
+
+				string fps = "FPS(seconds):" + to_string(1.0 / renderDuration.count());
 				cRenderer.DrawString(fps);
 				//fps 출력하는 코드 ....
 			
