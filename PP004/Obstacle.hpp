@@ -8,7 +8,7 @@
 class Obstacle
 {
 public:
-	double x;
+	int x;
 	int y;
 
 	Obstacle()
@@ -27,7 +27,7 @@ public:
 	}
 	void MoveFastObstacle()
 	{
-		x -= 1.5;
+		x -= 2;
 	}
 	void ResetObstacle()
 	{
