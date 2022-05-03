@@ -129,6 +129,8 @@ namespace MuSeoun_Engine
 
 				string fps = "FPS(seconds):" + to_string(Frame);
 				cRenderer.DrawString(fps);
+
+				this_thread::sleep_for(chrono::milliseconds(20));
 				//fps 출력하는 코드 ....
 			
 
