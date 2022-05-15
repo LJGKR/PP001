@@ -30,10 +30,10 @@ int main(void)
     float x2 = 0.83f;
 
     float x3 = 0.8f;
-    float x4 = 0.83f;
+    float x4 = 0.84f;
 
     float x5 = 0.8f;
-    float x6 = 0.83f;
+    float x6 = 0.85f;
 
     GLFWwindow* window;
     glfwSetErrorCallback(error_callback);
@@ -76,7 +76,7 @@ int main(void)
             h2 -= 0.007f;
         }
 
-        if (h1 >= 0.1f && h2 >= 0.1f)
+        if (h1 >= 0.1f && h2 >= 0.06f)
         {
             h1 = 0.1f;
             h2 = 0.06f;
@@ -132,9 +132,9 @@ int main(void)
         glBegin(GL_TRIANGLES);
 
         glColor3f(1.0f, 0.0f, 0.0f);
-        glVertex2f(x3, -0.14f);
+        glVertex2f(x3, -0.18f);
         glColor3f(1.0f, 0.0f, 0.0f);
-        glVertex2f(x4, -0.14f);
+        glVertex2f(x4, -0.18f);
         glColor3f(1.0f, 0.0f, 0.0f);
         glVertex2f(x3, -0.1f);
 
@@ -145,11 +145,11 @@ int main(void)
         glBegin(GL_TRIANGLES);
 
         glColor3f(1.0f, 0.0f, 0.0f);
-        glVertex2f(x5, 0.04f);
+        glVertex2f(x5, 0.07f);
         glColor3f(1.0f, 0.0f, 0.0f);
-        glVertex2f(x6, 0.04f);
+        glVertex2f(x6, 0.07f);
         glColor3f(1.0f, 0.0f, 0.0f);
-        glVertex2f(x6, 0.0f);
+        glVertex2f(x6, -0.01f);
 
         glEnd();
 
@@ -169,11 +169,11 @@ int main(void)
         }else if (x3 <= -1.2f && x4 <= -1.17f)
         {
             x3 = 0.8f;
-            x4 = 0.83f;
+            x4 = 0.84f;
         }else if (x5 <= -1.2f && x6 <= -1.17f)
         {
             x5 = 0.8f;
-            x6 = 0.83f;
+            x6 = 0.85f;
         }
 
         glfwSwapBuffers(window);
